@@ -1,0 +1,179 @@
+body, h1, p, button, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure it stays behind all content */
+}
+
+/* Overlay sombre pour améliorer la lisibilité */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Noir avec 50% d'opacité */
+    z-index: 1;
+}
+
+/* Barre de navigation */
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fond semi-transparent */
+    z-index: 2;
+}
+
+.nav-left .library-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-left .library-button:hover {
+    color: #2ee738; /* Couleur au survol */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-right a {
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+    color: #2ee738; /* Couleur au survol */
+}
+
+.nav-right .a .start-now {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #1a9c1e;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-right .a .start-now:hover {
+    background-color: #2ee738;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-right .a .start-now:active {
+    background-color: #20ce25;
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Section principale */
+.hero {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero .start-now {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #1a9c1e;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.hero .start-now:hover {
+    background-color: #2ee738;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero .start-now:active {
+    background-color: #20ce25;
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation de pulsation pour le bouton */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+.logo {
+height: 60px; /* Ajuste la taille selon ton besoin */
+margin-right: 15px; /* Ajoute un espacement entre le logo et le texte */
+}
