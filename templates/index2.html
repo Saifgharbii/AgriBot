@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; }
+        .chat-container { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: scroll; }
+        .message { margin: 10px 0; padding: 8px; border-radius: 5px; }
+        .user { background: #0084ff; color: white; text-align: right; }
+        .bot { background: #e0e0e0; text-align: left; }
+        .input-container { margin-top: 10px; display: flex; gap: 5px; }
+        input, button { padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+    <h2>Chatbot</h2>
+    <div class="chat-container" id="chatContainer"></div>
+
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type a message...">
+        <input type="file" id="imageUpload">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const userId = "user123"; // Simulate a unique user ID
+
+        async function sendMessage() {
+            const message = document.getElementById("userInput").value;
+            const imageInput = document.getElementById("imageUpload").files[0];
+
+            let imagePath = null;
+
+            // Upload the image if selected
+            if (imageInput) {
+                const formData = new FormData();
+                formData.append("image", imageInput);
+
+                const uploadResponse = await fetch("/upload_image", {
+                    method: "POST",
+                    body: formData
+                });
+                const uploadResult = await uploadResponse.json();
+                imagePath = uploadResult.file_path;
+            }
+
+            // Send message to the server
+            const response = await fetch("/send_message", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId, message, image_path: imagePath })
+            });
+
+            const result = await response.json();
+            document.getElementById("userInput").value = ""; // Clear input
+            displayMessage("You: " + message, "user");
+
+            if (result.response) {
+                displayMessage("Bot: " + result.response, "bot");
+            }
+        }
+
+        function displayMessage(text, type) {
+            const chatContainer = document.getElementById("chatContainer");
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerText = text;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Auto-scroll
+        }
+
+        async function loadChatHistory() {
+            const response = await fetch(`/get_conversations?user_id=${userId}`);
+            const data = await response.json();
+            data.history.forEach(chat => {
+                displayMessage("You: " + chat.user, "user");
+                displayMessage("Bot: " + chat.bot, "bot");
+            });
+        }
+
+        // Load chat history on page load
+        window.onload = loadChatHistory;
+    </script>
+
+</body>
+</html>

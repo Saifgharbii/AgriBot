@@ -1,0 +1,128 @@
+body {
+  background-color: #121212; /* Dark background for futuristic look */
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+.chat-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 50px auto;
+  background: #1e1e1e; /* Dark container */
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 128, 0, 0.5);
+  overflow: hidden;
+}
+.sidebar {
+  width: 250px;
+  background: #2c2c2c; /* Dark sidebar */
+  padding: 20px;
+  border-right: 1px solid #444;
+}
+.sidebar h3 {
+  color: #4caf50; /* Green accent */
+  margin-bottom: 20px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin: 10px 0;
+  color: #ccc;
+  cursor: pointer;
+}
+.sidebar ul li:hover {
+  color: #4caf50;
+}
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.chat-header {
+  background: #4caf50; /* Green header */
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.chat-body {
+  padding: 20px;
+  height: 400px;
+  overflow-y: auto;
+  border-bottom: 1px solid #444;
+}
+.chat-message {
+  margin-bottom: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.chat-message.user {
+  text-align: right;
+}
+.chat-message.bot {
+  text-align: left;
+}
+.chat-message p {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 70%;
+}
+.chat-message.user p {
+  background: #4caf50; /* Green for user messages */
+  color: white;
+}
+.chat-message.bot p {
+  background: #333; /* Dark gray for bot messages */
+  color: #fff;
+}
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: #2c2c2c;
+}
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 20px;
+  outline: none;
+  background: #1e1e1e;
+  color: #fff;
+}
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #4caf50; /* Green button */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.chat-input button:hover {
+  background: #45a049; /* Darker green on hover */
+}
+.photo-upload {
+  padding: 20px;
+  border-bottom: 1px solid #444;
+}
+.photo-upload input {
+  display: none;
+}
+.photo-upload label {
+  display: block;
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.photo-upload label:hover {
+  background: #45a049;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

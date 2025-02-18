@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriBot - Futuristic Agricultural Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #f5f5f5;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            padding: 20px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .chat-input {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        .chat-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        .chat-message p {
+            padding: 10px 15px;
+            border-radius: 15px;
+            margin: 0;
+        }
+        .chat-message.user {
+            margin-left: auto;
+        }
+        .chat-message.user p {
+            background: #4CAF50;
+            color: white;
+        }
+        .chat-message.bot p {
+            background: #f1f1f1;
+        }
+        .photo-upload {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .attachment-preview {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        #user-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="sidebar">
+            <h3>Last Conversations</h3>
+            <ul id="conversation-list"></ul>
+        </div>
+        <div class="chat-main">
+            <div class="chat-header">
+                AgriBot - Your Futuristic Agricultural Assistant
+            </div>
+            <div class="photo-upload">
+                <input type="file" id="photo-input" accept="image/*">
+                <label for="photo-input">Upload Photo for Diagnosis</label>
+                <div id="attachment-preview" class="attachment-preview">
+                    <p>Selected file: <span id="file-name"></span></p>
+                    <input type="text" id="attachment-message" placeholder="What would you like to know about this image?" style="width: 100%; margin: 10px 0;">
+                    <button onclick="sendAttachment()">Send with Message</button>
+                </div>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="chat-message bot">
+                    <p>Hello! I'm AgriBot. How can I assist you with your farm today?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message here...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentImagePath = null;
+        const userId = 'user_' + Math.random().toString(36).substr(2, 9);
+
+        // Load conversation history
+        async function loadConversations() {
+            try {
+                const response = await fetch(`/get_conversations?user_id=${userId}`);
+                const data = await response.json();
+                const conversationList = document.getElementById('conversation-list');
+                conversationList.innerHTML = '';
+                
+                data.history.forEach(msg => {
+                    const chatBody = document.getElementById('chat-body');
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('chat-message', msg.role);
+                    messageDiv.innerHTML = `<p>${msg.message}</p>`;
+                    chatBody.appendChild(messageDiv);
+                });
+            } catch (error) {
+                console.error('Error loading conversations:', error);
+            }
+        }
+
+        // Handle file upload
+        document.getElementById('photo-input').addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('/upload_image', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await response.json();
+                    currentImagePath = data.file_path;
+                    
+                    // Show attachment preview
+                    document.getElementById('attachment-preview').style.display = 'block';
+                    document.getElementById('file-name').textContent = file.name;
+                } catch (error) {
+                    console.error('Error uploading file:', error);
+                }
+            }
+        });
+
+        // Send message with attachment
+        async function sendAttachment() {
+            const attachmentMessage = document.getElementById('attachment-message').value;
+            if (!attachmentMessage.trim()) {
+                alert('Please enter a message about the image.');
+                return;
+            }
+
+            await sendMessageToServer(attachmentMessage, currentImagePath);
+            
+            // Reset attachment state
+            document.getElementById('attachment-preview').style.display = 'none';
+            document.getElementById('attachment-message').value = '';
+            document.getElementById('photo-input').value = '';
+            currentImagePath = null;
+        }
+
+        // Send regular message
+        async function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
+            
+            if (message === '') return;
+            
+            await sendMessageToServer(message);
+            userInput.value = '';
+        }
+
+        // Send message to server
+        async function sendMessageToServer(message, imagePath = null) {
+            const chatBody = document.getElementById('chat-body');
+            
+            // Add user message to chat
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('chat-message', 'user');
+            userMessage.innerHTML = `<p>${message}</p>`;
+            chatBody.appendChild(userMessage);
+
+            try {
+                const response = await fetch('/send_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        message: message,
+                        image_path: imagePath
+                    })
+                });
+
+                const data = await response.json();
+                
+                // Add bot response to chat
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('chat-message', 'bot');
+                botMessage.innerHTML = `<p>${data.response}</p>`;
+                chatBody.appendChild(botMessage);
+                
+                // Scroll to bottom
+                chatBody.scrollTop = chatBody.scrollHeight;
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+
+        // Allow sending message with Enter key
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Load initial conversations
+        loadConversations();
+    </script>
+</body>
+</html>
