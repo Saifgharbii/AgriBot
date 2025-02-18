@@ -33,7 +33,9 @@
             </div>
             <div class="chat-body" id="chat-body">
                 <div class="chat-message bot">
-                    <p>Hello! I'm AgriBot. How can I assist you with your farm today?</p>
+                    <div>
+                        <p>Hello! I'm AgriBot. How can I assist you with your farm today?</p>
+                    </div>                    
                 </div>
             </div>
             <div id="attachment-preview" class="attachment-preview">
@@ -197,7 +199,7 @@
                 // Add bot response to chat
                 const botMessage = document.createElement('div');
                 botMessage.classList.add('chat-message', 'bot');
-                botMessage.innerHTML = `<p>${marked.parse(data.response)}</p>`;
+                botMessage.innerHTML = `<div>${marked.parse(data.response)}</div>`;
                 chatBody.appendChild(botMessage);
 
                 // Scroll to bottom

@@ -107,12 +107,20 @@ body {
     margin: 0;
 }
 
+.chat-message div {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 70%;
+    margin: 0;
+}
+
 .chat-message.user p {
     background: #4caf50;
     color: white;
 }
 
-.chat-message.bot p {
+.chat-message.bot div {
     background: #333;
     color: #fff;
 }
