@@ -15,8 +15,10 @@
           <img src="{{ url_for('static', filename='assets/images/logo.png') }}"  alt="Logo Agriculture" class="logo">
           
       </div>
-      <div class="nav-right" href="{{ url_for('chat_bot') }}">
+      <div class="nav-right" >
+        <a href="{{ url_for('chat_bot') }}">
             <button class="start-now">Start Now</button>
+        </a>    
       </div>
   </nav>
   
@@ -26,7 +28,9 @@
         <section class="hero">
             <h1>Bienvenue dans le monde de l'agriculture</h1>
             <p>Découvrez des solutions innovantes pour une agriculture durable et respectueuse de l'environnement.</p>
-            <button class="start-now" href="{{ url_for('chat_bot')}}">Start Now</button>
+            <a href="{{ url_for('chat_bot')}}">
+                <button class="start-now" href="{{ url_for('chat_bot')}}">Start Now</button>
+            </a>
         </section>
     </main>
 

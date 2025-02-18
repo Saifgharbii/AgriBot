@@ -76,17 +76,8 @@ nav {
     gap: 20px;
 }
 
-.nav-right a {
-    color: #fff;
-    font-size: 20px;
-    transition: color 0.3s ease;
-}
 
-.nav-right a:hover {
-    color: #2ee738; /* Couleur au survol */
-}
-
-.nav-right .a .start-now {
+.nav-right .start-now {
     padding: 10px 20px;
     font-size: 1rem;
     color: #fff;
@@ -98,13 +89,13 @@ nav {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.nav-right .a .start-now:hover {
+.nav-right .start-now:hover {
     background-color: #2ee738;
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
-.nav-right .a .start-now:active {
+.nav-right .start-now:active {
     background-color: #20ce25;
     transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -174,6 +165,6 @@ nav {
     animation: pulse 2s infinite;
 }
 .logo {
-height: 60px; /* Ajuste la taille selon ton besoin */
+height: 90px; /* Ajuste la taille selon ton besoin */
 margin-right: 15px; /* Ajoute un espacement entre le logo et le texte */
 }
