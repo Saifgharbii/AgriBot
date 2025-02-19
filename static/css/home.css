@@ -175,6 +175,6 @@ nav {
     animation: pulse 2s infinite;
 }
 .logo {
-height: 90px; /* Ajuste la taille selon ton besoin */
-margin-right: 15px; /* Ajoute un espacement entre le logo et le texte */
+height: 60px; 
+margin-right: 15px; 
 }

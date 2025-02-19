@@ -88,6 +88,9 @@ AgriBot/
 │   └── js/                 # JavaScript files
 │       └── index.js        # Frontend logic for the chatbot
 ├── uploads/                # Folder for uploaded images
+├── venv/                   # Virtual environment
+├── demo / 
+│   ├── AgriBot Demo.mp4                # Demo video
 ├── conversations.json      # JSON file for storing conversations
 ├── requirements.txt        # Python dependencies
 ├── .env                    # Environment variables
