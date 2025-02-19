@@ -2,7 +2,6 @@
 
 AgriBot is an intelligent chatbot designed to assist farmers and agricultural professionals in diagnosing plant diseases, providing farming advice, and optimizing agricultural practices. Powered by **Google's Gemini API**, AgriBot offers a seamless and professional experience for users to interact with an AI assistant tailored for agriculture.
 
----
 
 ## Features 🌟
 
@@ -13,7 +12,6 @@ AgriBot is an intelligent chatbot designed to assist farmers and agricultural pr
 - **Image Upload**: Analyze plant images for accurate diagnosis.
 - **Markdown Responses**: Display responses in a clean and readable format.
 
----
 
 ## Technologies Used 🛠️
 
@@ -23,7 +21,6 @@ AgriBot is an intelligent chatbot designed to assist farmers and agricultural pr
 - **Database**: JSON-based conversation storage
 - **File Handling**: Image uploads for disease diagnosis
 
----
 
 ## Installation and Setup 🚀
 
@@ -152,7 +149,6 @@ AgriBot/
 - **GET** `/uploads/<filename>`
   - Serves uploaded images.
 
----
 
 ## Usage Examples 💡
 
@@ -169,7 +165,6 @@ AgriBot/
 ### 3. **Viewing Conversation History**
 - Retrieve past conversations to review previous advice or diagnoses.
 
----
 
 ## Screenshots 📸
 
@@ -179,8 +174,6 @@ AgriBot/
 ![Chatbot Interface](screenshots/chatbot.png)
 *Chatbot Interface*
 
----
-
 ## Future Enhancements 🚧
 
 - **User Authentication**: Add login/signup functionality.
@@ -188,7 +181,6 @@ AgriBot/
 - **Mobile App**: Develop a mobile version for on-the-go access.
 - **Integration with IoT Devices**: Connect with sensors for real-time data analysis.
 
----
 
 ## Contributing 🤝
 
@@ -199,13 +191,11 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/YourFeatureName`).
 5. Open a pull request.
 
----
 
 ## License 📜
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
----
 
 ## Acknowledgments 🙏
 
@@ -213,16 +203,14 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 - **Flask** for the backend framework.
 - **Bootstrap** for the frontend design.
 
----
 
 ## Contact 📧
 
 For questions or feedback, please contact:
 - **Your Name**: Saif Iddin Gharbi
 - **Email**: seifeddine.gharbi@supcom.tn  
-- **GitHub**: [Saif Iddin Gharbi](https://github.com/saifgharbii)
+- **GitHub**: [Saif Iddin Gharbi](https://github.com/Saifgharbii)
 
----
 
 Happy Farming with AgriBot! 🌾🤖
 
