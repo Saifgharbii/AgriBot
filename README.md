@@ -23,7 +23,7 @@
 
 <div align="center">
   <a href="https://github.com/Saifgharbii/AgriBot">
-    <img src="static/assets/images/logo.png" alt="Logo" width="256" height="256">
+    <img src="static/assets/images/logo.png" alt="Logo" width="300" >
   </a>
 </div>
 
