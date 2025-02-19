@@ -1,3 +1,32 @@
+<p align="center">
+  <a href="https://flask.palletsprojects.com/">
+    <img src="https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white"/>
+  </a>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white"/>
+  </a>
+  <a href="https://ai.google.dev/">
+    <img src="https://img.shields.io/badge/Google%20Gemini-%234285F4.svg?style=for-the-badge&logo=google&logoColor=white"/>
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
+  </a>
+  <a href="https://github.com/Saifgharbii/AgriBot">
+    <img src="https://img.shields.io/github/stars/Saifgharbii/AgriBot?style=social"/>
+  </a>
+  <a href="https://github.com/Saifgharbii/AgriBot">
+    <img src="https://img.shields.io/github/forks/Saifgharbii/AgriBot?style=social"/>
+  </a>
+</p>
+
+<br />
+
+<div align="center">
+  <a href="https://github.com/Saifgharbii/AgriBot">
+    <img src="static/assets/images/logo.png" alt="Logo" width="256" height="256">
+  </a>
+</div>
+
 # AgriBot - AI-Powered Agricultural Assistant 🌱🤖
 
 AgriBot is an intelligent chatbot designed to assist farmers and agricultural professionals in diagnosing plant diseases, providing farming advice, and optimizing agricultural practices. Powered by **Google's Gemini API**, AgriBot offers a seamless and professional experience for users to interact with an AI assistant tailored for agriculture.
@@ -65,7 +94,7 @@ AgriBot is an intelligent chatbot designed to assist farmers and agricultural pr
    http://127.0.0.1:5000
    ```
 
----
+
 
 ## Project Structure 📂
 
@@ -85,16 +114,13 @@ AgriBot/
 │   └── js/                 # JavaScript files
 │       └── index.js        # Frontend logic for the chatbot
 ├── uploads/                # Folder for uploaded images
-├── venv/                   # Virtual environment
-├── demo / 
-│   ├── AgriBot Demo.mp4                # Demo video
 ├── conversations.json      # JSON file for storing conversations
 ├── requirements.txt        # Python dependencies
 ├── .env                    # Environment variables
 └── README.md               # Project documentation
 ```
 
----
+ 
 
 ## API Endpoints 🌐
 
@@ -217,4 +243,4 @@ For questions or feedback, please contact:
 
 Happy Farming with AgriBot! 🌾🤖
 
----
+
