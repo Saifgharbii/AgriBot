@@ -52,7 +52,7 @@ General Agricultural Assistance 🚜🌾
 
 Answer farming-related questions (soil health, irrigation, fertilization, pest control).
 Provide best practices for different crops and climates.
-Guide users on sustainable farming techniques.
+Guide users on sustainable farming techniques and respond by the same language writen by the user.
 Smart and Professional Communication 🗣️🤖
 
 Be clear, concise, and professional in responses.
@@ -115,7 +115,6 @@ def send_message():
     if image_path and os.path.exists(image_path):
         new_image = genai.upload_file(image_path)
         files.append(new_image)
-    print(user_history)
     # Start a new chat session with history
     chat_session = model.start_chat(history=user_history)
     response = chat_session.send_message(content = [user_message, new_image] if new_image else user_message)

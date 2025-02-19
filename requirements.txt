@@ -1,0 +1,11 @@
+Flask==3.1.0
+google-ai-generativelanguage==0.6.15
+google-api-python-client==2.161.0
+google-auth==2.38.0
+google-auth-httplib2==0.2.0
+google-generativeai==0.8.4
+proto-plus==1.26.0
+pydantic==2.10.6
+python-dotenv==1.0.1
+requests==2.32.3
+tqdm==4.67.1
