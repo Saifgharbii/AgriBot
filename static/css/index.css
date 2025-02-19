@@ -26,6 +26,7 @@ body {
 }
 
 .chat-container {
+    animation: fadeIn 1s ease-in-out;
     display: flex;
     max-width: 1200px;
     height: 90vh;
@@ -88,7 +89,7 @@ body {
 
 .chat-message {
     margin-bottom: 15px;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .chat-message.user {
